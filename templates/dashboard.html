@@ -128,13 +128,24 @@
 
       // 🔹 Action badge styling
       function getActionBadge(action) {
-        if (action.includes("BUY"))
-          return `<span class="badge badge-buy">${action}</span>`;
-        if (action.includes("SELL"))
-          return `<span class="badge badge-sell">${action}</span>`;
-        return `<span class="badge badge-exit">${action}</span>`;
-      }
+        // CE ENTRY
+        if (action === "CE_ENTRY" || action === "CE_BUY")
+          return `<span class="badge badge-buy">CE BUY</span>`;
 
+        // CE EXIT
+        if (action === "CE_EXIT" || action === "CE_EXIT_BUY")
+          return `<span class="badge badge-exit">CE EXIT</span>`;
+
+        // PE ENTRY (FIXED HERE)
+        if (action === "PE_ENTRY" || action === "PE_SELL")
+          return `<span class="badge badge-sell">PE BUY</span>`;
+
+        // PE EXIT
+        if (action === "PE_EXIT" || action === "PE_EXIT_SELL")
+          return `<span class="badge badge-exit">PE EXIT</span>`;
+
+        return `<span class="badge">${action}</span>`;
+      }
       // 🔹 PnL styling
       function getPnL(pnl) {
         if (!pnl) return "";
@@ -153,7 +164,7 @@
             (a) => `
         <tr>
             <td>${a.symbol}</td>
-            <td>${getActionBadge(a.action)}</td>
+            <td>${getActionBadge(a.option_type + "_" + a.action)}</td>
             <td>${a.price}</td>
             <td>${a.datetime}</td>
         </tr>`,

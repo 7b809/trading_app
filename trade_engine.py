@@ -9,7 +9,7 @@ def process_signal(data):
     if symbol not in positions:
         positions[symbol] = {
             "capital": 100000,
-            "position": None,
+            "position": None,   # 🔹 CE / PE (updated)
             "entry_price": None,
             "quantity": 0
         }
@@ -17,13 +17,15 @@ def process_signal(data):
     state = positions[symbol]
     trade_log = None
 
-    # EXIT BUY
-    if action == "EXIT_BUY" and state["position"] == "BUY":
+    # =========================
+    # 🔹 EXIT BUY → CE EXIT
+    # =========================
+    if action == "EXIT_BUY" and state["position"] == "CE":
         pnl = (price - state["entry_price"]) * state["quantity"]
         state["capital"] += pnl
 
         trade_log = {
-            "type": "EXIT_BUY",
+            "type": "CE_EXIT",
             "entry_price": state["entry_price"],
             "exit_price": price,
             "quantity": state["quantity"],
@@ -33,13 +35,15 @@ def process_signal(data):
 
         state["position"] = None
 
-    # EXIT SELL
-    elif action == "EXIT_SELL" and state["position"] == "SELL":
+    # =========================
+    # 🔹 EXIT SELL → PE EXIT
+    # =========================
+    elif action == "EXIT_SELL" and state["position"] == "PE":
         pnl = (state["entry_price"] - price) * state["quantity"]
         state["capital"] += pnl
 
         trade_log = {
-            "type": "EXIT_SELL",
+            "type": "PE_EXIT",
             "entry_price": state["entry_price"],
             "exit_price": price,
             "quantity": state["quantity"],
@@ -49,27 +53,39 @@ def process_signal(data):
 
         state["position"] = None
 
-    # BUY
+    # =========================
+    # 🔹 BUY → CE ENTRY
+    # =========================
     elif action == "BUY":
+        # 🔹 SAFETY: if PE already open, wait for EXIT_SELL
+        if state["position"] == "PE":
+            return None
+
         state["quantity"] = state["capital"] // price
         state["entry_price"] = price
-        state["position"] = "BUY"
+        state["position"] = "CE"
 
         trade_log = {
-            "type": "BUY",
+            "type": "CE_ENTRY",
             "entry_price": price,
             "quantity": state["quantity"],
             "capital": state["capital"]
         }
 
-    # SELL
+    # =========================
+    # 🔹 SELL → PE ENTRY
+    # =========================
     elif action == "SELL":
+        # 🔹 SAFETY: if CE already open, wait for EXIT_BUY
+        if state["position"] == "CE":
+            return None
+
         state["quantity"] = state["capital"] // price
         state["entry_price"] = price
-        state["position"] = "SELL"
+        state["position"] = "PE"
 
         trade_log = {
-            "type": "SELL",
+            "type": "PE_ENTRY",
             "entry_price": price,
             "quantity": state["quantity"],
             "capital": state["capital"]
