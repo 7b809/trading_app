@@ -1,0 +1,1820 @@
+[{
+  "_id": {
+    "$oid": "69cb532e44a120b7be567e01"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67581.2,
+  "datetime": "2026-03-31 04:52:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5330b9878ee5ed14fd5c"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67581.2,
+  "datetime": "2026-03-31 04:52:00"
+},
+{
+  "_id": {
+    "$oid": "69cb53a7b9878ee5ed14fd5d"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22540,
+  "datetime": "2026-03-31 06:54:00"
+},
+{
+  "_id": {
+    "$oid": "69cb53a7b9878ee5ed14fd5e"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22540,
+  "datetime": "2026-03-31 06:54:00"
+},
+{
+  "_id": {
+    "$oid": "69cb541cb9878ee5ed14fd60"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22529,
+  "datetime": "2026-03-31 06:56:00"
+},
+{
+  "_id": {
+    "$oid": "69cb541c44a120b7be567e03"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22529,
+  "datetime": "2026-03-31 06:56:00"
+},
+{
+  "_id": {
+    "$oid": "69cb545ab9878ee5ed14fd62"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22540,
+  "datetime": "2026-03-31 06:57:00"
+},
+{
+  "_id": {
+    "$oid": "69cb545ab9878ee5ed14fd63"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22540,
+  "datetime": "2026-03-31 06:57:00"
+},
+{
+  "_id": {
+    "$oid": "69cb550eb9878ee5ed14fd66"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22526.5,
+  "datetime": "2026-03-31 07:00:00"
+},
+{
+  "_id": {
+    "$oid": "69cb550eb9878ee5ed14fd67"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22526.5,
+  "datetime": "2026-03-31 07:00:00"
+},
+{
+  "_id": {
+    "$oid": "69cb55c2b9878ee5ed14fd69"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67515.68,
+  "datetime": "2026-03-31 05:03:00"
+},
+{
+  "_id": {
+    "$oid": "69cb55c2b9878ee5ed14fd6a"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67515.68,
+  "datetime": "2026-03-31 05:03:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5600b9878ee5ed14fd6c"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22532,
+  "datetime": "2026-03-31 07:04:00"
+},
+{
+  "_id": {
+    "$oid": "69cb560044a120b7be567e04"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22532,
+  "datetime": "2026-03-31 07:04:00"
+},
+{
+  "_id": {
+    "$oid": "69cb563eb9878ee5ed14fd6e"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22528.5,
+  "datetime": "2026-03-31 07:05:00"
+},
+{
+  "_id": {
+    "$oid": "69cb563eb9878ee5ed14fd6f"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22528.5,
+  "datetime": "2026-03-31 07:05:00"
+},
+{
+  "_id": {
+    "$oid": "69cb56eeb9878ee5ed14fd71"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67479.52,
+  "datetime": "2026-03-31 05:08:00"
+},
+{
+  "_id": {
+    "$oid": "69cb56ee44a120b7be567e06"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67479.52,
+  "datetime": "2026-03-31 05:08:00"
+},
+{
+  "_id": {
+    "$oid": "69cb57e5b9878ee5ed14fd73"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22507,
+  "datetime": "2026-03-31 07:12:00"
+},
+{
+  "_id": {
+    "$oid": "69cb57e544a120b7be567e07"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22507,
+  "datetime": "2026-03-31 07:12:00"
+},
+{
+  "_id": {
+    "$oid": "69cb582a44a120b7be567e09"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22506,
+  "datetime": "2026-03-31 07:13:00"
+},
+{
+  "_id": {
+    "$oid": "69cb582ab9878ee5ed14fd75"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22506,
+  "datetime": "2026-03-31 07:13:00"
+},
+{
+  "_id": {
+    "$oid": "69cb585544a120b7be567e0b"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22508,
+  "datetime": "2026-03-31 07:14:00"
+},
+{
+  "_id": {
+    "$oid": "69cb585644a120b7be567e0d"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22508,
+  "datetime": "2026-03-31 07:14:00"
+},
+{
+  "_id": {
+    "$oid": "69cb589144a120b7be567e0f"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22501,
+  "datetime": "2026-03-31 07:15:00"
+},
+{
+  "_id": {
+    "$oid": "69cb589144a120b7be567e10"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22501,
+  "datetime": "2026-03-31 07:15:00"
+},
+{
+  "_id": {
+    "$oid": "69cb590a44a120b7be567e12"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67399.35,
+  "datetime": "2026-03-31 05:17:00"
+},
+{
+  "_id": {
+    "$oid": "69cb590a44a120b7be567e13"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67399.35,
+  "datetime": "2026-03-31 05:17:00"
+},
+{
+  "_id": {
+    "$oid": "69cb590a44a120b7be567e15"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22508,
+  "datetime": "2026-03-31 07:17:00"
+},
+{
+  "_id": {
+    "$oid": "69cb590a44a120b7be567e16"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22508,
+  "datetime": "2026-03-31 07:17:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5bdd4ac3e7a0d8ec9ecf"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22519.5,
+  "datetime": "2026-03-31 07:29:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5bdde416c3d9267574f8"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22519.5,
+  "datetime": "2026-03-31 07:29:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5c164ac3e7a0d8ec9ed1"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67570.18,
+  "datetime": "2026-03-31 05:30:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5c16e416c3d9267574f9"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67570.18,
+  "datetime": "2026-03-31 05:30:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5ccbe416c3d9267574fb"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22525.5,
+  "datetime": "2026-03-31 07:33:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5ccbe416c3d9267574fc"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22525.5,
+  "datetime": "2026-03-31 07:33:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5d07e416c3d9267574fe"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67626.06,
+  "datetime": "2026-03-31 05:34:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5d074ac3e7a0d8ec9ed2"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67626.06,
+  "datetime": "2026-03-31 05:34:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5df7e416c3d926757500"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67619.13,
+  "datetime": "2026-03-31 05:38:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5df7e416c3d926757501"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67619.13,
+  "datetime": "2026-03-31 05:38:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5e6ee416c3d926757503"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67649.8,
+  "datetime": "2026-03-31 05:40:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5e6ee416c3d926757504"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67649.8,
+  "datetime": "2026-03-31 05:40:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5eaae416c3d926757507"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67609.2,
+  "datetime": "2026-03-31 05:41:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5eaae416c3d926757508"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67609.2,
+  "datetime": "2026-03-31 05:41:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5efde416c3d92675750b"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22540,
+  "datetime": "2026-03-31 07:42:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5efd4ac3e7a0d8ec9ed3"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22540,
+  "datetime": "2026-03-31 07:42:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5f99e416c3d92675750d"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67650.61,
+  "datetime": "2026-03-31 05:45:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5f9ae416c3d92675750f"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67650.61,
+  "datetime": "2026-03-31 05:45:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5f9de416c3d926757511"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22550,
+  "datetime": "2026-03-31 07:45:00"
+},
+{
+  "_id": {
+    "$oid": "69cb5f9d4ac3e7a0d8ec9ed4"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22550,
+  "datetime": "2026-03-31 07:45:00"
+},
+{
+  "_id": {
+    "$oid": "69cb60c84ac3e7a0d8ec9ed6"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67682.66,
+  "datetime": "2026-03-31 05:50:00"
+},
+{
+  "_id": {
+    "$oid": "69cb60c8e416c3d926757513"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67682.66,
+  "datetime": "2026-03-31 05:50:00"
+},
+{
+  "_id": {
+    "$oid": "69cb61024ac3e7a0d8ec9ed7"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67711.16,
+  "datetime": "2026-03-31 05:51:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6102e416c3d926757515"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67711.16,
+  "datetime": "2026-03-31 05:51:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6104e416c3d926757517"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22546.5,
+  "datetime": "2026-03-31 07:51:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6104e416c3d926757518"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22546.5,
+  "datetime": "2026-03-31 07:51:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6141e416c3d92675751a"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67667,
+  "datetime": "2026-03-31 05:52:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6141e416c3d92675751b"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67667,
+  "datetime": "2026-03-31 05:52:00"
+},
+{
+  "_id": {
+    "$oid": "69cb631fe416c3d92675751d"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22539.5,
+  "datetime": "2026-03-31 08:00:00"
+},
+{
+  "_id": {
+    "$oid": "69cb631fe416c3d92675751e"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22539.5,
+  "datetime": "2026-03-31 08:00:00"
+},
+{
+  "_id": {
+    "$oid": "69cb639ce416c3d926757520"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22523,
+  "datetime": "2026-03-31 08:02:00"
+},
+{
+  "_id": {
+    "$oid": "69cb639ce416c3d926757521"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22523,
+  "datetime": "2026-03-31 08:02:00"
+},
+{
+  "_id": {
+    "$oid": "69cb640fe416c3d926757524"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67640.82,
+  "datetime": "2026-03-31 06:04:00"
+},
+{
+  "_id": {
+    "$oid": "69cb640fe416c3d926757526"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67640.82,
+  "datetime": "2026-03-31 06:04:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6486e416c3d926757528"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67526.77,
+  "datetime": "2026-03-31 06:06:00"
+},
+{
+  "_id": {
+    "$oid": "69cb648754fe79bf046c7714"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67526.77,
+  "datetime": "2026-03-31 06:06:00"
+},
+{
+  "_id": {
+    "$oid": "69cb657954fe79bf046c7716"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22517,
+  "datetime": "2026-03-31 08:10:00"
+},
+{
+  "_id": {
+    "$oid": "69cb657954fe79bf046c7717"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22517,
+  "datetime": "2026-03-31 08:10:00"
+},
+{
+  "_id": {
+    "$oid": "69cb666854fe79bf046c7719"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67430.83,
+  "datetime": "2026-03-31 06:14:00"
+},
+{
+  "_id": {
+    "$oid": "69cb666854fe79bf046c771b"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67430.83,
+  "datetime": "2026-03-31 06:14:00"
+},
+{
+  "_id": {
+    "$oid": "69cb671a54fe79bf046c771d"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67388.42,
+  "datetime": "2026-03-31 06:17:00"
+},
+{
+  "_id": {
+    "$oid": "69cb671a54fe79bf046c771e"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67388.42,
+  "datetime": "2026-03-31 06:17:00"
+},
+{
+  "_id": {
+    "$oid": "69cb675654fe79bf046c7720"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67395.77,
+  "datetime": "2026-03-31 06:18:00"
+},
+{
+  "_id": {
+    "$oid": "69cb675654fe79bf046c7721"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67395.77,
+  "datetime": "2026-03-31 06:18:00"
+},
+{
+  "_id": {
+    "$oid": "69cb680954fe79bf046c7724"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22521.5,
+  "datetime": "2026-03-31 08:21:00"
+},
+{
+  "_id": {
+    "$oid": "69cb680954fe79bf046c7725"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22521.5,
+  "datetime": "2026-03-31 08:21:00"
+},
+{
+  "_id": {
+    "$oid": "69cb68c054fe79bf046c7728"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22530,
+  "datetime": "2026-03-31 08:24:00"
+},
+{
+  "_id": {
+    "$oid": "69cb68c1a56e4f7de93afe21"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22530,
+  "datetime": "2026-03-31 08:24:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6935a56e4f7de93afe22"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22516,
+  "datetime": "2026-03-31 08:26:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6936a56e4f7de93afe25"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22516,
+  "datetime": "2026-03-31 08:26:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6936a56e4f7de93afe24"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67311.6,
+  "datetime": "2026-03-31 06:26:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6936a56e4f7de93afe23"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67311.6,
+  "datetime": "2026-03-31 06:26:00"
+},
+{
+  "_id": {
+    "$oid": "69cb69ef54fe79bf046c772a"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67348.18,
+  "datetime": "2026-03-31 06:29:00"
+},
+{
+  "_id": {
+    "$oid": "69cb69efa56e4f7de93afe28"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67348.18,
+  "datetime": "2026-03-31 06:29:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6a66a56e4f7de93afe2a"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22521.5,
+  "datetime": "2026-03-31 08:31:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6a6654fe79bf046c772c"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22521.5,
+  "datetime": "2026-03-31 08:31:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6aad54fe79bf046c772e"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22513,
+  "datetime": "2026-03-31 08:32:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6aad54fe79bf046c772f"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22513,
+  "datetime": "2026-03-31 08:32:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6b5354fe79bf046c7731"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67312.69,
+  "datetime": "2026-03-31 06:35:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6b53a56e4f7de93afe2c"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67312.69,
+  "datetime": "2026-03-31 06:35:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6b8c54fe79bf046c7733"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22523,
+  "datetime": "2026-03-31 08:36:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6b8ca56e4f7de93afe2d"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22523,
+  "datetime": "2026-03-31 08:36:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6c15a56e4f7de93afe2f"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22513,
+  "datetime": "2026-03-31 08:38:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6c15a56e4f7de93afe30"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22513,
+  "datetime": "2026-03-31 08:38:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6c43a56e4f7de93afe32"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67342.27,
+  "datetime": "2026-03-31 06:39:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6c4354fe79bf046c7735"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67342.27,
+  "datetime": "2026-03-31 06:39:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6df554fe79bf046c7737"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22502,
+  "datetime": "2026-03-31 08:46:00"
+},
+{
+  "_id": {
+    "$oid": "69cb6df667afbcbd715b94f0"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22502,
+  "datetime": "2026-03-31 08:46:00"
+},
+{
+  "_id": {
+    "$oid": "69cb707b9f93f4407a3f9c59"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67434.34,
+  "datetime": "2026-03-31 06:57:00"
+},
+{
+  "_id": {
+    "$oid": "69cb707b15399f1f525140ef"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67434.34,
+  "datetime": "2026-03-31 06:57:00"
+},
+{
+  "_id": {
+    "$oid": "69cb707bda255fd9e1935242"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22504,
+  "datetime": "2026-03-31 08:57:00"
+},
+{
+  "_id": {
+    "$oid": "69cb707bbd1a37c372c80362"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22504,
+  "datetime": "2026-03-31 08:57:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7178bd1a37c372c80364"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22518,
+  "datetime": "2026-03-31 09:01:00"
+},
+{
+  "_id": {
+    "$oid": "69cb717815399f1f525140f1"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22518,
+  "datetime": "2026-03-31 09:01:00"
+},
+{
+  "_id": {
+    "$oid": "69cb725eda255fd9e1935243"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22500.5,
+  "datetime": "2026-03-31 09:05:00"
+},
+{
+  "_id": {
+    "$oid": "69cb725eda255fd9e1935244"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22500.5,
+  "datetime": "2026-03-31 09:05:00"
+},
+{
+  "_id": {
+    "$oid": "69cb74b4805be63d7f8e2362"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67233.4,
+  "datetime": "2026-03-31 07:15:00"
+},
+{
+  "_id": {
+    "$oid": "69cb74b404d5e21048b0ec78"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67233.4,
+  "datetime": "2026-03-31 07:15:00"
+},
+{
+  "_id": {
+    "$oid": "69cb74b904d5e21048b0ec7a"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22480,
+  "datetime": "2026-03-31 09:15:00"
+},
+{
+  "_id": {
+    "$oid": "69cb74b9805be63d7f8e2363"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22480,
+  "datetime": "2026-03-31 09:15:00"
+},
+{
+  "_id": {
+    "$oid": "69cb74ee04d5e21048b0ec7c"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67171.53,
+  "datetime": "2026-03-31 07:16:00"
+},
+{
+  "_id": {
+    "$oid": "69cb74ee805be63d7f8e2364"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67171.53,
+  "datetime": "2026-03-31 07:16:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7564805be63d7f8e2366"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22463,
+  "datetime": "2026-03-31 09:18:00"
+},
+{
+  "_id": {
+    "$oid": "69cb756404d5e21048b0ec7e"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22463,
+  "datetime": "2026-03-31 09:18:00"
+},
+{
+  "_id": {
+    "$oid": "69cb75de04d5e21048b0ec80"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22475,
+  "datetime": "2026-03-31 09:20:00"
+},
+{
+  "_id": {
+    "$oid": "69cb75de04d5e21048b0ec83"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67159.52,
+  "datetime": "2026-03-31 07:20:00"
+},
+{
+  "_id": {
+    "$oid": "69cb75de04d5e21048b0ec81"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22475,
+  "datetime": "2026-03-31 09:20:00"
+},
+{
+  "_id": {
+    "$oid": "69cb75de04d5e21048b0ec84"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67159.52,
+  "datetime": "2026-03-31 07:20:00"
+},
+{
+  "_id": {
+    "$oid": "69cb770a04d5e21048b0ec86"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67128.08,
+  "datetime": "2026-03-31 07:25:00"
+},
+{
+  "_id": {
+    "$oid": "69cb770a805be63d7f8e2367"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67128.08,
+  "datetime": "2026-03-31 07:25:00"
+},
+{
+  "_id": {
+    "$oid": "69cb778304d5e21048b0ec88"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67252.68,
+  "datetime": "2026-03-31 07:27:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7783805be63d7f8e2368"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67252.68,
+  "datetime": "2026-03-31 07:27:00"
+},
+{
+  "_id": {
+    "$oid": "69cb792e04d5e21048b0ec8a"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22519,
+  "datetime": "2026-03-31 09:34:00"
+},
+{
+  "_id": {
+    "$oid": "69cb792e04d5e21048b0ec8b"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22519,
+  "datetime": "2026-03-31 09:34:00"
+},
+{
+  "_id": {
+    "$oid": "69cb796204d5e21048b0ec8d"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67169.32,
+  "datetime": "2026-03-31 07:35:00"
+},
+{
+  "_id": {
+    "$oid": "69cb796204d5e21048b0ec8e"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67169.32,
+  "datetime": "2026-03-31 07:35:00"
+},
+{
+  "_id": {
+    "$oid": "69cb797204d5e21048b0ec90"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22524.5,
+  "datetime": "2026-03-31 09:35:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7974418f3f0638612b7f"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22524.5,
+  "datetime": "2026-03-31 09:35:00"
+},
+{
+  "_id": {
+    "$oid": "69cb799e418f3f0638612b80"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22520.5,
+  "datetime": "2026-03-31 09:36:00"
+},
+{
+  "_id": {
+    "$oid": "69cb799e04d5e21048b0ec92"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22520.5,
+  "datetime": "2026-03-31 09:36:00"
+},
+{
+  "_id": {
+    "$oid": "69cb79dd04d5e21048b0ec94"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22528,
+  "datetime": "2026-03-31 09:37:00"
+},
+{
+  "_id": {
+    "$oid": "69cb79dd04d5e21048b0ec95"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22528,
+  "datetime": "2026-03-31 09:37:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7a16418f3f0638612b81"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67255.06,
+  "datetime": "2026-03-31 07:38:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7a1604d5e21048b0ec98"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67255.06,
+  "datetime": "2026-03-31 07:38:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7b47418f3f0638612b83"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22582,
+  "datetime": "2026-03-31 09:43:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7b4704d5e21048b0ec9a"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22582,
+  "datetime": "2026-03-31 09:43:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7b8204d5e21048b0ec9c"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67271.97,
+  "datetime": "2026-03-31 07:44:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7b8304d5e21048b0ec9e"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67271.97,
+  "datetime": "2026-03-31 07:44:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7bbb04d5e21048b0ec9f"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67337.28,
+  "datetime": "2026-03-31 07:45:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7bbb418f3f0638612b84"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67337.28,
+  "datetime": "2026-03-31 07:45:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7cab418f3f0638612b86"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67341.75,
+  "datetime": "2026-03-31 07:49:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7cac418f3f0638612b88"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67341.75,
+  "datetime": "2026-03-31 07:49:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7d30418f3f0638612b89"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22579.5,
+  "datetime": "2026-03-31 09:51:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7d3004d5e21048b0eca1"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22579.5,
+  "datetime": "2026-03-31 09:51:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7e1204d5e21048b0eca3"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67345.44,
+  "datetime": "2026-03-31 07:55:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7e12418f3f0638612b8a"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67345.44,
+  "datetime": "2026-03-31 07:55:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7e89418f3f0638612b8c"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67290.6,
+  "datetime": "2026-03-31 07:57:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7e89418f3f0638612b8d"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67290.6,
+  "datetime": "2026-03-31 07:57:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7f3e418f3f0638612b8f"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22605.5,
+  "datetime": "2026-03-31 10:00:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7f3f418f3f0638612b90"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22605.5,
+  "datetime": "2026-03-31 10:00:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7ff1418f3f0638612b92"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67389.03,
+  "datetime": "2026-03-31 08:03:00"
+},
+{
+  "_id": {
+    "$oid": "69cb7ff1418f3f0638612b93"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67389.03,
+  "datetime": "2026-03-31 08:03:00"
+},
+{
+  "_id": {
+    "$oid": "69cb81d6f41e71a317671b07"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67333.18,
+  "datetime": "2026-03-31 08:11:00"
+},
+{
+  "_id": {
+    "$oid": "69cb81d655900e8d25dd81db"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67333.18,
+  "datetime": "2026-03-31 08:11:00"
+},
+{
+  "_id": {
+    "$oid": "69cb830af41e71a317671b09"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22572.5,
+  "datetime": "2026-03-31 10:16:00"
+},
+{
+  "_id": {
+    "$oid": "69cb830a55900e8d25dd81dc"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22572.5,
+  "datetime": "2026-03-31 10:16:00"
+},
+{
+  "_id": {
+    "$oid": "69cb833a55900e8d25dd81de"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67351.18,
+  "datetime": "2026-03-31 08:17:00"
+},
+{
+  "_id": {
+    "$oid": "69cb833af41e71a317671b0a"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67351.18,
+  "datetime": "2026-03-31 08:17:00"
+},
+{
+  "_id": {
+    "$oid": "69cb83b1f41e71a317671b0c"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22560.5,
+  "datetime": "2026-03-31 10:19:00"
+},
+{
+  "_id": {
+    "$oid": "69cb83b2f41e71a317671b0d"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22560.5,
+  "datetime": "2026-03-31 10:19:00"
+},
+{
+  "_id": {
+    "$oid": "69cb84a4f41e71a317671b0f"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 67337.91,
+  "datetime": "2026-03-31 08:23:00"
+},
+{
+  "_id": {
+    "$oid": "69cb84a4f41e71a317671b10"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 67337.91,
+  "datetime": "2026-03-31 08:23:00"
+},
+{
+  "_id": {
+    "$oid": "69cb851df41e71a317671b12"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22549.5,
+  "datetime": "2026-03-31 10:25:00"
+},
+{
+  "_id": {
+    "$oid": "69cb851d55900e8d25dd81e0"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22549.5,
+  "datetime": "2026-03-31 10:25:00"
+},
+{
+  "_id": {
+    "$oid": "69cb855ff41e71a317671b14"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22540.5,
+  "datetime": "2026-03-31 10:26:00"
+},
+{
+  "_id": {
+    "$oid": "69cb855f55900e8d25dd81e1"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22540.5,
+  "datetime": "2026-03-31 10:26:00"
+},
+{
+  "_id": {
+    "$oid": "69cb85d155900e8d25dd81e3"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22560,
+  "datetime": "2026-03-31 10:28:00"
+},
+{
+  "_id": {
+    "$oid": "69cb85d1f41e71a317671b16"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22560,
+  "datetime": "2026-03-31 10:28:00"
+},
+{
+  "_id": {
+    "$oid": "69cb86d655900e8d25dd81e5"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22545.5,
+  "datetime": "2026-03-31 10:32:00"
+},
+{
+  "_id": {
+    "$oid": "69cb86d6f41e71a317671b17"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22545.5,
+  "datetime": "2026-03-31 10:32:00"
+},
+{
+  "_id": {
+    "$oid": "69cb87aef41e71a317671b19"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 67113.7,
+  "datetime": "2026-03-31 08:36:00"
+},
+{
+  "_id": {
+    "$oid": "69cb87ae55900e8d25dd81e7"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 67113.7,
+  "datetime": "2026-03-31 08:36:00"
+},
+{
+  "_id": {
+    "$oid": "69cb87f9f41e71a317671b1b"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22549.5,
+  "datetime": "2026-03-31 10:37:00"
+},
+{
+  "_id": {
+    "$oid": "69cb87f9f41e71a317671b1c"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22549.5,
+  "datetime": "2026-03-31 10:37:00"
+},
+{
+  "_id": {
+    "$oid": "69cb8864f41e71a317671b1f"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_BUY",
+  "price": 66993.63,
+  "datetime": "2026-03-31 08:39:00"
+},
+{
+  "_id": {
+    "$oid": "69cb8864f41e71a317671b20"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "SELL",
+  "price": 66993.63,
+  "datetime": "2026-03-31 08:39:00"
+},
+{
+  "_id": {
+    "$oid": "69cb8875f41e71a317671b23"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_BUY",
+  "price": 22537.5,
+  "datetime": "2026-03-31 10:39:00"
+},
+{
+  "_id": {
+    "$oid": "69cb887555900e8d25dd81e8"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "SELL",
+  "price": 22537.5,
+  "datetime": "2026-03-31 10:39:00"
+},
+{
+  "_id": {
+    "$oid": "69cb8a4255900e8d25dd81ea"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "EXIT_SELL",
+  "price": 66818.88,
+  "datetime": "2026-03-31 08:47:00"
+},
+{
+  "_id": {
+    "$oid": "69cb8a4255900e8d25dd81eb"
+  },
+  "tickerid": "INDEX:BTCUSD",
+  "symbol": "BTCUSD",
+  "action": "BUY",
+  "price": 66818.88,
+  "datetime": "2026-03-31 08:47:00"
+},
+{
+  "_id": {
+    "$oid": "69cb8a6a55900e8d25dd81ed"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "EXIT_SELL",
+  "price": 22536.5,
+  "datetime": "2026-03-31 10:47:00"
+},
+{
+  "_id": {
+    "$oid": "69cb8a6af41e71a317671b25"
+  },
+  "tickerid": "={settlement-as-close:true,symbol:NSEIX:NIFTY1!}",
+  "symbol": "NIFTY1!",
+  "action": "BUY",
+  "price": 22536.5,
+  "datetime": "2026-03-31 10:47:00"
+}]
