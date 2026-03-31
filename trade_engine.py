@@ -1,39 +1,78 @@
-capital = 100000
-
-current_position = None
-entry_price = None
-quantity = 0
+positions = {}  # 🔹 NEW (store per symbol)
 
 def process_signal(data):
-    global current_position, entry_price, quantity, capital
-
+    symbol = data["symbol"]
     action = data["action"]
     price = float(data["price"])
 
+    # 🔹 create state per symbol (instead of global variables)
+    if symbol not in positions:
+        positions[symbol] = {
+            "capital": 100000,
+            "position": None,
+            "entry_price": None,
+            "quantity": 0
+        }
+
+    state = positions[symbol]
     trade_log = None
 
-    if action == "EXIT_BUY" and current_position == "BUY":
-        pnl = (price - entry_price) * quantity
-        capital += pnl
-        trade_log = {"type":"EXIT_BUY","entry_price":entry_price,"exit_price":price,"quantity":quantity,"pnl":pnl,"capital":capital}
-        current_position = None
+    # EXIT BUY
+    if action == "EXIT_BUY" and state["position"] == "BUY":
+        pnl = (price - state["entry_price"]) * state["quantity"]
+        state["capital"] += pnl
 
-    elif action == "EXIT_SELL" and current_position == "SELL":
-        pnl = (entry_price - price) * quantity
-        capital += pnl
-        trade_log = {"type":"EXIT_SELL","entry_price":entry_price,"exit_price":price,"quantity":quantity,"pnl":pnl,"capital":capital}
-        current_position = None
+        trade_log = {
+            "type": "EXIT_BUY",
+            "entry_price": state["entry_price"],
+            "exit_price": price,
+            "quantity": state["quantity"],
+            "pnl": pnl,
+            "capital": state["capital"]
+        }
 
+        state["position"] = None
+
+    # EXIT SELL
+    elif action == "EXIT_SELL" and state["position"] == "SELL":
+        pnl = (state["entry_price"] - price) * state["quantity"]
+        state["capital"] += pnl
+
+        trade_log = {
+            "type": "EXIT_SELL",
+            "entry_price": state["entry_price"],
+            "exit_price": price,
+            "quantity": state["quantity"],
+            "pnl": pnl,
+            "capital": state["capital"]
+        }
+
+        state["position"] = None
+
+    # BUY
     elif action == "BUY":
-        quantity = capital // price
-        entry_price = price
-        current_position = "BUY"
-        trade_log = {"type":"BUY","entry_price":price,"quantity":quantity,"capital":capital}
+        state["quantity"] = state["capital"] // price
+        state["entry_price"] = price
+        state["position"] = "BUY"
 
+        trade_log = {
+            "type": "BUY",
+            "entry_price": price,
+            "quantity": state["quantity"],
+            "capital": state["capital"]
+        }
+
+    # SELL
     elif action == "SELL":
-        quantity = capital // price
-        entry_price = price
-        current_position = "SELL"
-        trade_log = {"type":"SELL","entry_price":price,"quantity":quantity,"capital":capital}
+        state["quantity"] = state["capital"] // price
+        state["entry_price"] = price
+        state["position"] = "SELL"
+
+        trade_log = {
+            "type": "SELL",
+            "entry_price": price,
+            "quantity": state["quantity"],
+            "capital": state["capital"]
+        }
 
     return trade_log

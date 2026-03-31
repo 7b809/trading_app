@@ -7,9 +7,13 @@ app = Flask(__name__)
 @app.route("/webhook", methods=["POST"])
 def webhook():
     data = request.json
+
+    # store alert
     alerts_collection.insert_one(data)
 
+    # process trade
     trade = process_signal(data)
+
     if trade:
         trade["symbol"] = data.get("symbol")
         trade["datetime"] = data.get("datetime")
@@ -17,19 +21,49 @@ def webhook():
 
     return jsonify({"status": "success"})
 
+
+# 🔹 UPDATED (symbol + limit support)
 @app.route("/alerts", methods=["GET"])
 def get_alerts():
-    alerts = list(alerts_collection.find({}, {"_id": 0}).sort("datetime", -1).limit(50))
+    symbol = request.args.get("symbol")
+    limit = int(request.args.get("limit", 50))  # ✅ NEW (default 50)
+
+    query = {}
+    if symbol:
+        query["symbol"] = symbol
+
+    alerts = list(
+        alerts_collection.find(query, {"_id": 0})
+        .sort("datetime", -1)
+        .limit(limit)  # ✅ using dynamic limit
+    )
+
     return jsonify(alerts)
 
+
+# 🔹 UPDATED (symbol + limit support)
 @app.route("/trades", methods=["GET"])
 def get_trades():
-    trades = list(trades_collection.find({}, {"_id": 0}).sort("datetime", -1).limit(50))
+    symbol = request.args.get("symbol")
+    limit = int(request.args.get("limit", 50))  # ✅ NEW (default 50)
+
+    query = {}
+    if symbol:
+        query["symbol"] = symbol
+
+    trades = list(
+        trades_collection.find(query, {"_id": 0})
+        .sort("datetime", -1)
+        .limit(limit)  # ✅ using dynamic limit
+    )
+
     return jsonify(trades)
+
 
 @app.route("/")
 def dashboard():
     return render_template("dashboard.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

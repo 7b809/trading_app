@@ -4,39 +4,124 @@
 <title>Trading Dashboard</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-dark text-white">
+
 <div class="container mt-4">
-<h2 class="text-center mb-4">Trading Dashboard</h2>
-<div class="row">
-<div class="col-md-6">
-<h4>Alerts</h4>
-<table class="table table-dark" id="alertsTable">
-<thead><tr><th>Symbol</th><th>Action</th><th>Price</th><th>Time</th></tr></thead>
-<tbody></tbody>
-</table>
+    <h2 class="text-center mb-4">Trading Dashboard</h2>
+
+    <!-- 🔹 Controls -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <select id="symbolSelect" class="form-select">
+                <option value="">All Symbols</option>
+                <option value="BTCUSDT">BTCUSDT</option>
+                <option value="ETHUSDT">ETHUSDT</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <select id="limitSelect" class="form-select">
+                <option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <!-- Alerts -->
+        <div class="col-md-6">
+            <h4>Alerts</h4>
+            <table class="table table-dark table-striped" id="alertsTable">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Action</th>
+                        <th>Price</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Trades -->
+        <div class="col-md-6">
+            <h4>Trades</h4>
+            <table class="table table-dark table-striped" id="tradesTable">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Entry</th>
+                        <th>Exit</th>
+                        <th>Qty</th>
+                        <th>PNL</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </div>
 </div>
-<div class="col-md-6">
-<h4>Trades</h4>
-<table class="table table-dark" id="tradesTable">
-<thead><tr><th>Type</th><th>Entry</th><th>Exit</th><th>Qty</th><th>PNL</th></tr></thead>
-<tbody></tbody>
-</table>
-</div>
-</div>
-</div>
+
 <script>
-async function loadData(){
-const alerts = await fetch('/alerts').then(r=>r.json());
-const trades = await fetch('/trades').then(r=>r.json());
+let limit = 20;
+let symbol = "";
 
-document.querySelector("#alertsTable tbody").innerHTML = alerts.map(a=>`
-<tr><td>${a.symbol}</td><td>${a.action}</td><td>${a.price}</td><td>${a.datetime}</td></tr>`).join("");
-
-document.querySelector("#tradesTable tbody").innerHTML = trades.map(t=>`
-<tr><td>${t.type}</td><td>${t.entry_price||""}</td><td>${t.exit_price||""}</td><td>${t.quantity||""}</td><td>${t.pnl||""}</td></tr>`).join("");
+// 🔹 Build API URL dynamically
+function buildUrl(base) {
+    let url = base + "?limit=" + limit;
+    if (symbol) {
+        url += "&symbol=" + symbol;
+    }
+    return url;
 }
-setInterval(loadData,3000);
+
+async function loadData() {
+
+    const alerts = await fetch(buildUrl('/alerts')).then(r => r.json());
+    const trades = await fetch(buildUrl('/trades')).then(r => r.json());
+
+    // Alerts render
+    document.querySelector("#alertsTable tbody").innerHTML =
+        alerts.map(a => `
+        <tr>
+            <td>${a.symbol}</td>
+            <td>${a.action}</td>
+            <td>${a.price}</td>
+            <td>${a.datetime}</td>
+        </tr>`).join("");
+
+    // Trades render
+    document.querySelector("#tradesTable tbody").innerHTML =
+        trades.map(t => `
+        <tr>
+            <td>${t.type}</td>
+            <td>${t.entry_price || ""}</td>
+            <td>${t.exit_price || ""}</td>
+            <td>${t.quantity || ""}</td>
+            <td>${t.pnl ? t.pnl.toFixed(2) : ""}</td>
+        </tr>`).join("");
+}
+
+// 🔹 Dropdown events
+document.getElementById("symbolSelect").addEventListener("change", (e) => {
+    symbol = e.target.value;
+    loadData();
+});
+
+document.getElementById("limitSelect").addEventListener("change", (e) => {
+    limit = e.target.value;
+    loadData();
+});
+
+// 🔹 Refresh loop
+setInterval(loadData, 3000);
 loadData();
 </script>
+
 </body>
 </html>
