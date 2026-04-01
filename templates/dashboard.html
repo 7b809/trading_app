@@ -51,6 +51,11 @@
         text-align: center;
         font-weight: bold;
       }
+
+      .table-container {
+        max-height: 500px;
+        overflow-y: auto;
+      }
     </style>
   </head>
 
@@ -67,49 +72,38 @@
         </div>
 
         <div class="col-md-4">
-          <select id="limitSelect" class="form-select">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50" selected>50</option>
-          </select>
+          <input
+            type="number"
+            id="limitSelect"
+            class="form-control"
+            value="50"
+            min="1"
+            max="1000"
+          />
         </div>
       </div>
 
       <div class="row">
-        <!-- Alerts -->
-        <div class="col-md-6">
+        <!-- Alerts (FULL WIDTH NOW) -->
+        <div class="col-md-12">
           <div class="card p-3">
             <h5>🚨 Alerts</h5>
-            <table class="table table-dark table-hover" id="alertsTable">
-              <thead>
-                <tr>
-                  <th>Symbol</th>
-                  <th>Action</th>
-                  <th>Price</th>
-                  <th>Time</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </div>
 
-        <!-- Trades -->
-        <div class="col-md-6">
-          <div class="card p-3">
-            <h5>💼 Trades</h5>
-            <table class="table table-dark table-hover" id="tradesTable">
-              <thead>
-                <tr>
-                  <th>Type</th>
-                  <th>Entry</th>
-                  <th>Exit</th>
-                  <th>Qty</th>
-                  <th>PNL</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+            <div class="table-container">
+              <table class="table table-dark table-hover" id="alertsTable">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Symbol</th>
+                    <th>Action</th>
+                    <th>Price</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
           </div>
         </div>
       </div>
@@ -119,74 +113,71 @@
       let limit = 20;
       let symbol = "";
 
-      // 🔹 Build API URL
       function buildUrl(base) {
         let url = base + "?limit=" + limit;
         if (symbol) url += "&symbol=" + symbol;
         return url;
       }
 
-      // 🔹 Action badge styling
       function getActionBadge(action) {
-        // CE ENTRY
         if (action === "CE_ENTRY" || action === "CE_BUY")
           return `<span class="badge badge-buy">CE BUY</span>`;
 
-        // CE EXIT
         if (action === "CE_EXIT" || action === "CE_EXIT_BUY")
           return `<span class="badge badge-exit">CE EXIT</span>`;
 
-        // PE ENTRY (FIXED HERE)
         if (action === "PE_ENTRY" || action === "PE_SELL")
           return `<span class="badge badge-sell">PE BUY</span>`;
 
-        // PE EXIT
         if (action === "PE_EXIT" || action === "PE_EXIT_SELL")
           return `<span class="badge badge-exit">PE EXIT</span>`;
 
         return `<span class="badge">${action}</span>`;
       }
-      // 🔹 PnL styling
-      function getPnL(pnl) {
-        if (!pnl) return "";
-        return pnl > 0
-          ? `<span class="pnl-positive">+${pnl.toFixed(2)}</span>`
-          : `<span class="pnl-negative">${pnl.toFixed(2)}</span>`;
+
+      function getOrderNumber(action) {
+        if (action === "CE_ENTRY" || action === "CE_BUY") return 1;
+        if (action === "CE_EXIT" || action === "CE_EXIT_BUY") return 2;
+        if (action === "PE_ENTRY" || action === "PE_SELL") return 3;
+        if (action === "PE_EXIT" || action === "PE_EXIT_SELL") return 4;
+        return "";
+      }
+
+      /* ✅ NEW: IST FORMAT FUNCTION (ADDED ONLY) */
+      function formatToIST(datetimeStr) {
+        if (!datetimeStr) return "";
+
+        const date = new Date(datetimeStr);
+
+        return date.toLocaleString("en-IN", {
+          timeZone: "Asia/Kolkata",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false
+        });
       }
 
       async function loadData() {
         const alerts = await fetch(buildUrl("/alerts")).then((r) => r.json());
-        const trades = await fetch(buildUrl("/trades")).then((r) => r.json());
 
-        // Alerts
         document.querySelector("#alertsTable tbody").innerHTML = alerts
           .map(
             (a) => `
-        <tr>
-            <td>${a.symbol}</td>
-            <td>${getActionBadge(a.option_type + "_" + a.action)}</td>
-            <td>${a.price}</td>
-            <td>${a.datetime}</td>
-        </tr>`,
-          )
-          .join("");
-
-        // Trades
-        document.querySelector("#tradesTable tbody").innerHTML = trades
-          .map(
-            (t) => `
-        <tr>
-            <td>${getActionBadge(t.type)}</td>
-            <td>${t.entry_price || ""}</td>
-            <td>${t.exit_price || ""}</td>
-            <td>${t.quantity || ""}</td>
-            <td>${getPnL(t.pnl)}</td>
-        </tr>`,
+<tr>
+    <td>${getOrderNumber(a.option_type + "_" + a.action)}</td>
+    <td>${a.symbol}</td>
+    <td>${getActionBadge(a.option_type + "_" + a.action)}</td>
+    <td>${a.price}</td>
+    <td>${formatToIST(a.datetime)}</td>
+</tr>`
           )
           .join("");
       }
 
-      // Dropdown events
       document
         .getElementById("symbolSelect")
         .addEventListener("change", (e) => {
@@ -194,19 +185,19 @@
           loadData();
         });
 
-      document.getElementById("limitSelect").addEventListener("change", (e) => {
+      document.getElementById("limitSelect").addEventListener("input", (e) => {
         limit = e.target.value;
         loadData();
       });
 
-      // Refresh
       async function init() {
-        await loadSymbols(); // wait for symbols
-        loadData(); // then load data
+        await loadSymbols();
+        loadData();
         setInterval(loadData, 3000);
       }
 
       init();
+
       async function loadSymbols() {
         const symbols = await fetch("/symbols").then((r) => r.json());
 
