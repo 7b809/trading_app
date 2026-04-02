@@ -3,6 +3,11 @@ from db import alerts_collection, trades_collection
 from trade_engine import process_signal
 import logging
 
+# 🔹 NEW IMPORTS (for time logic)
+from datetime import datetime, time
+import pytz
+from db import alerts_offtime_collection, trades_offtime_collection
+
 app = Flask(__name__)
 
 # 🔹 Logging toggle
@@ -17,6 +22,22 @@ logging.basicConfig(
 def log(msg):
     if test_log:
         logging.info(msg)
+
+# 🔹 IST timezone
+IST = pytz.timezone("Asia/Kolkata")
+
+# 🔹 Time window checker (1:30 PM to 2:40 PM)
+def is_within_time_window(dt_str):
+    try:
+        dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M:%S")
+        dt = IST.localize(dt)
+
+        start = time(13, 30)
+        end = time(14, 40)
+
+        return start <= dt.time() <= end
+    except Exception as e:
+        return False
 
 
 @app.route("/webhook", methods=["POST"])
@@ -45,9 +66,20 @@ def webhook():
             data["option_type"] = "PE"
 
     # =========================
+    # 🔹 TIME CHECK
+    # =========================
+    in_time = is_within_time_window(data.get("datetime", ""))
+
+    if test_log:
+        log(f"[TIME FILTER] In Window: {in_time} | Datetime: {data.get('datetime')}")
+
+    # =========================
     # 🔹 STORE ALERT (ENRICHED)
     # =========================
-    alerts_collection.insert_one(data)
+    if in_time:
+        alerts_collection.insert_one(data)
+    else:
+        alerts_offtime_collection.insert_one(data)
 
     # 🔹 LOG (alerts)
     if test_log:
@@ -62,7 +94,11 @@ def webhook():
     if trade:
         trade["symbol"] = data.get("symbol")
         trade["datetime"] = data.get("datetime")
-        trades_collection.insert_one(trade)
+
+        if in_time:
+            trades_collection.insert_one(trade)
+        else:
+            trades_offtime_collection.insert_one(trade)
 
         # 🔹 LOG (trades)
         if test_log:
