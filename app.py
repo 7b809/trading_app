@@ -28,6 +28,16 @@ IST = pytz.timezone("Asia/Kolkata")
 
 
 # =========================
+# 🔥 NEW: ROUTE → SYMBOL MAPPING (ADDED ONLY)
+# =========================
+WEBHOOK_CONFIG = {
+    "1": "nifty",
+    "2": "gift_nifty",
+    "3": "bitcoin"
+}
+
+
+# =========================
 # 🔹 NEW: PARSE NEW ALERT FORMAT
 # =========================
 def parse_new_alert(raw_msg):
@@ -55,36 +65,38 @@ def is_within_time_window(dt_str):
 
 
 # =========================
-# 🔥 MODIFIED WEBHOOK (ROUTE BASED + NEW FORMAT SUPPORT)
+# 🔥 MODIFIED WEBHOOK (SAFE ADDITIONS ONLY)
 # =========================
 @app.route("/webhook/<route_id>", methods=["POST"])
 def webhook(route_id):
     data = request.json
 
-    raw_message = data.get("message")  # 🔹 NEW
-    symbol = data.get("symbol")
+    raw_message = data.get("message")
+
+    # 🔥 ROUTE → SYMBOL MAPPING (SAFE OVERRIDE)
+    mapped_symbol = WEBHOOK_CONFIG.get(str(route_id))
+    symbol = mapped_symbol if mapped_symbol else data.get("symbol")
+
     price = float(data.get("price", 0))
 
     # 🔹 CURRENT IST TIME (REQUEST TIME)
     now_ist = datetime.now(IST).strftime("%Y-%m-%d %H:%M:%S")
 
-    # =========================
-    # 🔹 NEW ALERT PARSING
-    # =========================
     parsed_actions = parse_new_alert(raw_message)
 
     trade = None
 
     # =========================
-    # 🔹 PROCESS TRADE FIRST (MODIFIED ONLY IF NEW FORMAT)
+    # 🔹 PROCESS TRADE FIRST
     # =========================
     if parsed_actions:
         for action in parsed_actions:
             temp_data = {
-                "symbol": symbol,
+                "symbol": symbol,  # ✅ mapped symbol used
                 "action": action,
                 "price": price
             }
+
             trade = process_signal(temp_data)
 
             if trade:
@@ -92,13 +104,13 @@ def webhook(route_id):
                 trade["datetime"] = now_ist
                 trade["route"] = route_id
 
-                # 🔹 ADD option_type (SAME LOGIC)
+                # 🔹 ADD option_type (UNCHANGED LOGIC)
                 if "CE" in trade["type"]:
                     temp_data["option_type"] = "CE"
                 elif "PE" in trade["type"]:
                     temp_data["option_type"] = "PE"
 
-                # 🔹 TIME CHECK (UNCHANGED LOGIC)
+                # 🔹 TIME CHECK
                 in_time = is_within_time_window(now_ist)
 
                 if in_time:
@@ -108,8 +120,10 @@ def webhook(route_id):
 
     else:
         # =========================
-        # 🔹 FALLBACK TO OLD LOGIC (UNCHANGED)
+        # 🔹 FALLBACK (UNCHANGED LOGIC)
         # =========================
+        data["symbol"] = symbol  # 🔥 ONLY ADD
+
         trade = process_signal(data)
 
         if trade:
@@ -127,7 +141,7 @@ def webhook(route_id):
         in_time = is_within_time_window(data.get("datetime", ""))
 
         if trade:
-            trade["symbol"] = data.get("symbol")
+            trade["symbol"] = symbol
             trade["datetime"] = data.get("datetime")
             trade["route"] = route_id
 
@@ -137,13 +151,14 @@ def webhook(route_id):
                 trades_offtime_collection.insert_one(trade)
 
     # =========================
-    # 🔹 STORE ALERT (ENHANCED BUT SAFE)
+    # 🔹 STORE ALERT (SAFE ADDITIONS)
     # =========================
     alert_doc = data.copy()
 
     alert_doc["message"] = raw_message
     alert_doc["route"] = route_id
-    alert_doc["datetime"] = now_ist  # 🔹 ALWAYS REQUEST TIME
+    alert_doc["symbol"] = symbol   # 🔥 IMPORTANT
+    alert_doc["datetime"] = now_ist
 
     in_time_alert = is_within_time_window(now_ist)
 
