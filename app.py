@@ -26,7 +26,21 @@ def log(msg):
 # 🔹 IST timezone
 IST = pytz.timezone("Asia/Kolkata")
 
-# 🔹 Time window checker (1:30 PM to 2:40 PM)
+
+# =========================
+# 🔹 NEW: PARSE NEW ALERT FORMAT
+# =========================
+def parse_new_alert(raw_msg):
+    mapping = {
+        "pe_exit_ce_entry": ["EXIT_SELL", "BUY"],
+        "ce_exit_pe_entry": ["EXIT_BUY", "SELL"]
+    }
+    return mapping.get(str(raw_msg).lower())
+
+
+# =========================
+# 🔹 Time window checker (UNCHANGED)
+# =========================
 def is_within_time_window(dt_str):
     try:
         dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M:%S")
@@ -36,81 +50,114 @@ def is_within_time_window(dt_str):
         end = time(14, 40)
 
         return start <= dt.time() <= end
-    except Exception as e:
+    except Exception:
         return False
 
 
-@app.route("/webhook", methods=["POST"])
-def webhook():
+# =========================
+# 🔥 MODIFIED WEBHOOK (ROUTE BASED + NEW FORMAT SUPPORT)
+# =========================
+@app.route("/webhook/<route_id>", methods=["POST"])
+def webhook(route_id):
     data = request.json
 
-    # =========================
-    # 🔹 PROCESS TRADE FIRST
-    # =========================
-    trade = process_signal(data)
+    raw_message = data.get("message")  # 🔹 NEW
+    symbol = data.get("symbol")
+    price = float(data.get("price", 0))
+
+    # 🔹 CURRENT IST TIME (REQUEST TIME)
+    now_ist = datetime.now(IST).strftime("%Y-%m-%d %H:%M:%S")
 
     # =========================
-    # 🔹 ADD option_type (CE/PE)
+    # 🔹 NEW ALERT PARSING
     # =========================
-    if trade:
-        if "CE" in trade["type"]:
-            data["option_type"] = "CE"
-        elif "PE" in trade["type"]:
-            data["option_type"] = "PE"
+    parsed_actions = parse_new_alert(raw_message)
 
-    # 🔹 FALLBACK (VERY IMPORTANT)
-    if not data.get("option_type"):
-        if data.get("action") in ["BUY", "EXIT_BUY"]:
-            data["option_type"] = "CE"
-        elif data.get("action") in ["SELL", "EXIT_SELL"]:
-            data["option_type"] = "PE"
+    trade = None
 
     # =========================
-    # 🔹 TIME CHECK
+    # 🔹 PROCESS TRADE FIRST (MODIFIED ONLY IF NEW FORMAT)
     # =========================
-    in_time = is_within_time_window(data.get("datetime", ""))
+    if parsed_actions:
+        for action in parsed_actions:
+            temp_data = {
+                "symbol": symbol,
+                "action": action,
+                "price": price
+            }
+            trade = process_signal(temp_data)
 
-    if test_log:
-        log(f"[TIME FILTER] In Window: {in_time} | Datetime: {data.get('datetime')}")
+            if trade:
+                trade["symbol"] = symbol
+                trade["datetime"] = now_ist
+                trade["route"] = route_id
 
-    # =========================
-    # 🔹 STORE ALERT (ENRICHED)
-    # =========================
-    if in_time:
-        alerts_collection.insert_one(data)
+                # 🔹 ADD option_type (SAME LOGIC)
+                if "CE" in trade["type"]:
+                    temp_data["option_type"] = "CE"
+                elif "PE" in trade["type"]:
+                    temp_data["option_type"] = "PE"
+
+                # 🔹 TIME CHECK (UNCHANGED LOGIC)
+                in_time = is_within_time_window(now_ist)
+
+                if in_time:
+                    trades_collection.insert_one(trade)
+                else:
+                    trades_offtime_collection.insert_one(trade)
+
     else:
-        alerts_offtime_collection.insert_one(data)
+        # =========================
+        # 🔹 FALLBACK TO OLD LOGIC (UNCHANGED)
+        # =========================
+        trade = process_signal(data)
 
-    # 🔹 LOG (alerts)
-    if test_log:
-        symbol = data.get("symbol")
-        query = {"symbol": symbol} if symbol else {}
-        total_alerts = alerts_collection.count_documents(query)
-        log(f"[WEBHOOK] Alerts Count | Symbol: {symbol or 'ALL'} | Total: {total_alerts}")
+        if trade:
+            if "CE" in trade["type"]:
+                data["option_type"] = "CE"
+            elif "PE" in trade["type"]:
+                data["option_type"] = "PE"
+
+        if not data.get("option_type"):
+            if data.get("action") in ["BUY", "EXIT_BUY"]:
+                data["option_type"] = "CE"
+            elif data.get("action") in ["SELL", "EXIT_SELL"]:
+                data["option_type"] = "PE"
+
+        in_time = is_within_time_window(data.get("datetime", ""))
+
+        if trade:
+            trade["symbol"] = data.get("symbol")
+            trade["datetime"] = data.get("datetime")
+            trade["route"] = route_id
+
+            if in_time:
+                trades_collection.insert_one(trade)
+            else:
+                trades_offtime_collection.insert_one(trade)
 
     # =========================
-    # 🔹 STORE TRADE
+    # 🔹 STORE ALERT (ENHANCED BUT SAFE)
     # =========================
-    if trade:
-        trade["symbol"] = data.get("symbol")
-        trade["datetime"] = data.get("datetime")
+    alert_doc = data.copy()
 
-        if in_time:
-            trades_collection.insert_one(trade)
-        else:
-            trades_offtime_collection.insert_one(trade)
+    alert_doc["message"] = raw_message
+    alert_doc["route"] = route_id
+    alert_doc["datetime"] = now_ist  # 🔹 ALWAYS REQUEST TIME
 
-        # 🔹 LOG (trades)
-        if test_log:
-            symbol = trade.get("symbol")
-            query = {"symbol": symbol} if symbol else {}
-            total_trades = trades_collection.count_documents(query)
-            log(f"[WEBHOOK] Trades Count | Symbol: {symbol or 'ALL'} | Total: {total_trades}")
+    in_time_alert = is_within_time_window(now_ist)
+
+    if in_time_alert:
+        alerts_collection.insert_one(alert_doc)
+    else:
+        alerts_offtime_collection.insert_one(alert_doc)
 
     return jsonify({"status": "success"})
 
 
-# 🔹 UPDATED (symbol + limit support)
+# =========================
+# 🔹 ALERTS API (UNCHANGED)
+# =========================
 @app.route("/alerts", methods=["GET"])
 def get_alerts():
     symbol = request.args.get("symbol")
@@ -136,7 +183,9 @@ def get_alerts():
     return jsonify(alerts)
 
 
-# 🔹 UPDATED (symbol + limit support)
+# =========================
+# 🔹 TRADES API (UNCHANGED)
+# =========================
 @app.route("/trades", methods=["GET"])
 def get_trades():
     symbol = request.args.get("symbol")
@@ -162,12 +211,18 @@ def get_trades():
     return jsonify(trades)
 
 
+# =========================
+# 🔹 SYMBOLS API (UNCHANGED)
+# =========================
 @app.route("/symbols", methods=["GET"])
 def get_symbols():
     symbols = alerts_collection.distinct("symbol")
     return jsonify(symbols)
 
 
+# =========================
+# 🔹 DASHBOARD (UNCHANGED)
+# =========================
 @app.route("/")
 def dashboard():
     if test_log:

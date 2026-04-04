@@ -61,7 +61,7 @@
 
   <body>
     <div class="container mt-4">
-      <h2 class="text-center mb-4">📊 Trading Dashboard</h2>
+      <h2 class="text-center mb-4">📊 Trading Alerts Dashboard</h2>
 
       <!-- 🔹 Controls -->
       <div class="row mb-3">
@@ -84,7 +84,7 @@
       </div>
 
       <div class="row">
-        <!-- Alerts (FULL WIDTH NOW) -->
+        <!-- Alerts -->
         <div class="col-md-12">
           <div class="card p-3">
             <h5>🚨 Alerts</h5>
@@ -94,10 +94,10 @@
                 <thead>
                   <tr>
                     <th>#</th>
+                    <th>Message</th>   <!-- 🔹 NEW -->
+                    <th>Time (IST)</th>
                     <th>Symbol</th>
-                    <th>Action</th>
-                    <th>Price</th>
-                    <th>Time</th>
+                    <th>Webhook</th>  <!-- 🔹 NEW -->
                   </tr>
                 </thead>
                 <tbody></tbody>
@@ -143,7 +143,7 @@
         return "";
       }
 
-      /* ✅ NEW: IST FORMAT FUNCTION (ADDED ONLY) */
+      /* ✅ IST FORMAT (UNCHANGED) */
       function formatToIST(datetimeStr) {
         if (!datetimeStr) return "";
 
@@ -166,13 +166,13 @@
 
         document.querySelector("#alertsTable tbody").innerHTML = alerts
           .map(
-            (a) => `
+            (a, i) => `
 <tr>
-    <td>${getOrderNumber(a.option_type + "_" + a.action)}</td>
-    <td>${a.symbol}</td>
-    <td>${getActionBadge(a.option_type + "_" + a.action)}</td>
-    <td>${a.price}</td>
+    <td>${i + 1}</td>
+    <td>${a.message || "-"}</td>
     <td>${formatToIST(a.datetime)}</td>
+    <td>${a.symbol}</td>
+    <td>/webhook/${a.route || "-"}</td>
 </tr>`
           )
           .join("");
