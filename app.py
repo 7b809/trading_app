@@ -28,7 +28,7 @@ IST = pytz.timezone("Asia/Kolkata")
 
 
 # =========================
-# 🔥 NEW: ROUTE → SYMBOL MAPPING (ADDED ONLY)
+# 🔥 ROUTE → SYMBOL MAPPING
 # =========================
 WEBHOOK_CONFIG = {
     "1": "nifty",
@@ -38,7 +38,7 @@ WEBHOOK_CONFIG = {
 
 
 # =========================
-# 🔹 NEW: PARSE NEW ALERT FORMAT
+# 🔹 PARSE NEW ALERT FORMAT
 # =========================
 def parse_new_alert(raw_msg):
     mapping = {
@@ -49,7 +49,7 @@ def parse_new_alert(raw_msg):
 
 
 # =========================
-# 🔹 Time window checker (UNCHANGED)
+# 🔹 TIME WINDOW (UNCHANGED)
 # =========================
 def is_within_time_window(dt_str):
     try:
@@ -65,109 +65,161 @@ def is_within_time_window(dt_str):
 
 
 # =========================
-# 🔥 MODIFIED WEBHOOK (SAFE ADDITIONS ONLY)
+# 🔥 ROBUST WEBHOOK
 # =========================
 @app.route("/webhook/<route_id>", methods=["POST"])
 def webhook(route_id):
-    data = request.json
 
-    raw_message = data.get("message")
+    try:
+        # =========================
+        # 🔹 SAFE INPUT PARSING (JSON + TEXT)
+        # =========================
+        if request.is_json:
+            data = request.get_json()
+        else:
+            raw_text = request.get_data(as_text=True)
 
-    # 🔥 ROUTE → SYMBOL MAPPING (SAFE OVERRIDE)
-    mapped_symbol = WEBHOOK_CONFIG.get(str(route_id))
-    symbol = mapped_symbol if mapped_symbol else data.get("symbol")
-
-    price = float(data.get("price", 0))
-
-    # 🔹 CURRENT IST TIME (REQUEST TIME)
-    now_ist = datetime.now(IST).strftime("%Y-%m-%d %H:%M:%S")
-
-    parsed_actions = parse_new_alert(raw_message)
-
-    trade = None
-
-    # =========================
-    # 🔹 PROCESS TRADE FIRST
-    # =========================
-    if parsed_actions:
-        for action in parsed_actions:
-            temp_data = {
-                "symbol": symbol,  # ✅ mapped symbol used
-                "action": action,
-                "price": price
+            data = {
+                "message": raw_text.strip(),
+                "symbol": None,
+                "price": 0
             }
 
-            trade = process_signal(temp_data)
+        raw_message = data.get("message")
+
+        # =========================
+        # 🔹 SYMBOL MAPPING
+        # =========================
+        mapped_symbol = WEBHOOK_CONFIG.get(str(route_id))
+        symbol = mapped_symbol if mapped_symbol else data.get("symbol")
+
+        price = float(data.get("price", 0) or 0)
+
+        # 🔹 CURRENT IST TIME
+        now_ist = datetime.now(IST).strftime("%Y-%m-%d %H:%M:%S")
+
+        parsed_actions = parse_new_alert(raw_message)
+
+        trade = None
+
+        # =========================
+        # 🔹 PROCESS TRADE
+        # =========================
+        if parsed_actions:
+            for action in parsed_actions:
+                temp_data = {
+                    "symbol": symbol,
+                    "action": action,
+                    "price": price
+                }
+
+                try:
+                    trade = process_signal(temp_data)
+                except Exception as e:
+                    log(f"[TRADE ERROR] {e}")
+                    trade = None
+
+                if trade:
+                    trade["symbol"] = symbol
+                    trade["datetime"] = now_ist
+                    trade["route"] = route_id
+
+                    if "CE" in trade["type"]:
+                        temp_data["option_type"] = "CE"
+                    elif "PE" in trade["type"]:
+                        temp_data["option_type"] = "PE"
+
+                    in_time = is_within_time_window(now_ist)
+
+                    try:
+                        if in_time:
+                            trades_collection.insert_one(trade)
+                        else:
+                            trades_offtime_collection.insert_one(trade)
+                    except Exception as e:
+                        log(f"[DB TRADE ERROR] {e}")
+
+        else:
+            # =========================
+            # 🔹 FALLBACK OLD LOGIC
+            # =========================
+            data["symbol"] = symbol
+
+            try:
+                trade = process_signal(data)
+            except Exception as e:
+                log(f"[TRADE ERROR] {e}")
+                trade = None
+
+            if trade:
+                if "CE" in trade["type"]:
+                    data["option_type"] = "CE"
+                elif "PE" in trade["type"]:
+                    data["option_type"] = "PE"
+
+            if not data.get("option_type"):
+                if data.get("action") in ["BUY", "EXIT_BUY"]:
+                    data["option_type"] = "CE"
+                elif data.get("action") in ["SELL", "EXIT_SELL"]:
+                    data["option_type"] = "PE"
+
+            in_time = is_within_time_window(data.get("datetime", ""))
 
             if trade:
                 trade["symbol"] = symbol
-                trade["datetime"] = now_ist
+                trade["datetime"] = data.get("datetime")
                 trade["route"] = route_id
 
-                # 🔹 ADD option_type (UNCHANGED LOGIC)
-                if "CE" in trade["type"]:
-                    temp_data["option_type"] = "CE"
-                elif "PE" in trade["type"]:
-                    temp_data["option_type"] = "PE"
+                try:
+                    if in_time:
+                        trades_collection.insert_one(trade)
+                    else:
+                        trades_offtime_collection.insert_one(trade)
+                except Exception as e:
+                    log(f"[DB TRADE ERROR] {e}")
 
-                # 🔹 TIME CHECK
-                in_time = is_within_time_window(now_ist)
-
-                if in_time:
-                    trades_collection.insert_one(trade)
-                else:
-                    trades_offtime_collection.insert_one(trade)
-
-    else:
         # =========================
-        # 🔹 FALLBACK (UNCHANGED LOGIC)
+        # 🔹 ALWAYS SAVE ALERT (FAIL-SAFE)
         # =========================
-        data["symbol"] = symbol  # 🔥 ONLY ADD
+        alert_doc = data.copy()
 
-        trade = process_signal(data)
+        alert_doc["message"] = raw_message
+        alert_doc["route"] = route_id
+        alert_doc["symbol"] = symbol
+        alert_doc["datetime"] = now_ist
 
-        if trade:
-            if "CE" in trade["type"]:
-                data["option_type"] = "CE"
-            elif "PE" in trade["type"]:
-                data["option_type"] = "PE"
+        in_time_alert = is_within_time_window(now_ist)
 
-        if not data.get("option_type"):
-            if data.get("action") in ["BUY", "EXIT_BUY"]:
-                data["option_type"] = "CE"
-            elif data.get("action") in ["SELL", "EXIT_SELL"]:
-                data["option_type"] = "PE"
-
-        in_time = is_within_time_window(data.get("datetime", ""))
-
-        if trade:
-            trade["symbol"] = symbol
-            trade["datetime"] = data.get("datetime")
-            trade["route"] = route_id
-
-            if in_time:
-                trades_collection.insert_one(trade)
+        try:
+            if in_time_alert:
+                alerts_collection.insert_one(alert_doc)
             else:
-                trades_offtime_collection.insert_one(trade)
+                alerts_offtime_collection.insert_one(alert_doc)
+        except Exception as e:
+            log(f"[DB ALERT ERROR] {e}")
 
-    # =========================
-    # 🔹 STORE ALERT (SAFE ADDITIONS)
-    # =========================
-    alert_doc = data.copy()
+        return jsonify({"status": "success"})
 
-    alert_doc["message"] = raw_message
-    alert_doc["route"] = route_id
-    alert_doc["symbol"] = symbol   # 🔥 IMPORTANT
-    alert_doc["datetime"] = now_ist
+    except Exception as e:
+        # 🔥 FINAL SAFETY NET
+        log(f"[WEBHOOK CRASH] {e}")
 
-    in_time_alert = is_within_time_window(now_ist)
+        # Try saving raw request at least
+        try:
+            raw_text = request.get_data(as_text=True)
 
-    if in_time_alert:
-        alerts_collection.insert_one(alert_doc)
-    else:
-        alerts_offtime_collection.insert_one(alert_doc)
+            fallback_doc = {
+                "message": raw_text,
+                "route": route_id,
+                "datetime": datetime.now(IST).strftime("%Y-%m-%d %H:%M:%S"),
+                "error": str(e)
+            }
 
-    return jsonify({"status": "success"})
+            alerts_collection.insert_one(fallback_doc)
+        except Exception:
+            pass
+
+        return jsonify({"status": "error", "msg": str(e)}), 200
 
 
 # =========================
@@ -182,18 +234,11 @@ def get_alerts():
     if symbol:
         query["symbol"] = symbol
 
-    if test_log:
-        total_alerts = alerts_collection.count_documents(query)
-        log(f"[ALERTS API] Requested | Symbol: {symbol or 'ALL'} | Total Found: {total_alerts} | Limit: {limit}")
-
     alerts = list(
         alerts_collection.find(query, {"_id": 0})
         .sort("datetime", -1)
         .limit(limit)
     )
-
-    if test_log:
-        log(f"[ALERTS API] Returned Count: {len(alerts)}")
 
     return jsonify(alerts)
 
@@ -210,44 +255,25 @@ def get_trades():
     if symbol:
         query["symbol"] = symbol
 
-    if test_log:
-        total_trades = trades_collection.count_documents(query)
-        log(f"[TRADES API] Requested | Symbol: {symbol or 'ALL'} | Total Found: {total_trades} | Limit: {limit}")
-
     trades = list(
         trades_collection.find(query, {"_id": 0})
         .sort("datetime", -1)
         .limit(limit)
     )
 
-    if test_log:
-        log(f"[TRADES API] Returned Count: {len(trades)}")
-
     return jsonify(trades)
 
 
-# =========================
-# 🔹 SYMBOLS API (UNCHANGED)
-# =========================
 @app.route("/symbols", methods=["GET"])
 def get_symbols():
     symbols = alerts_collection.distinct("symbol")
     return jsonify(symbols)
 
 
-# =========================
-# 🔹 DASHBOARD (UNCHANGED)
-# =========================
 @app.route("/")
 def dashboard():
-    if test_log:
-        log("[DASHBOARD] UI Requested")
-
     return render_template("dashboard.html")
 
 
 if __name__ == "__main__":
-    if test_log:
-        log("🚀 Flask App Started")
-
     app.run(debug=True)
